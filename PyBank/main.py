@@ -24,6 +24,7 @@ with open (csvpath) as filepath:
     greatestmonth = ""
     greatestdecrease=99999999999
     decreasemonth = ""
+    averagechange=0
 
     for row in csvreader:
         total=total+1
@@ -33,6 +34,7 @@ with open (csvpath) as filepath:
 
             change=int(row[1])-previous
             totalchange=totalchange + change
+            averagechange=round(totalchange/(total-1), 2)
             if change > greatestincrease:
                 greatestincrease=change
                 greatestmonth = row[0]
@@ -50,7 +52,7 @@ print("Financial Analysis")
 print("--------------------")
 print("Total Months:  "+str(total))
 print("Total:  $"+str(totalprofitlosses))
-print("Average Change: $" +str(totalchange/(total-1)))
+print("Average Change: $" +str(averagechange))
 print("Greatest Increase:  " + greatestmonth +" $"+str(greatestincrease))
 print("Greatest Decrease:  " + decreasemonth +" $"+str(greatestdecrease))
 
@@ -59,7 +61,7 @@ with open (outpath, "w") as textfile:
     textfile.write ("--------------------\n")
     textfile.write("Total Months:  "+str(total)+"\n")
     textfile.write("Total:  $"+str(totalprofitlosses)+"\n")
-    textfile.write("Average Change: $" +str(totalchange/(total-1))+"\n")
+    textfile.write("Average Change: $" +str(averagechange)+"\n")
     textfile.write("Greatest Increase:  " + greatestmonth +" $"+str(greatestincrease)+"\n")
     textfile.write("Greatest Decrease:  " + decreasemonth +" $"+str(greatestdecrease)+"\n")
     
