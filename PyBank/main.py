@@ -53,8 +53,8 @@ print("--------------------")
 print("Total Months:  "+str(total))
 print("Total:  $"+str(totalprofitlosses))
 print("Average Change: $" +str(averagechange))
-print("Greatest Increase:  " + greatestmonth +" $"+str(greatestincrease))
-print("Greatest Decrease:  " + decreasemonth +" $"+str(greatestdecrease))
+print("Greatest Increase in Profits:  " + greatestmonth +" $"+str("(" +greatestincrease +")"))
+print("Greatest Decrease in Profits:  " + decreasemonth +" $"+str(greatestdecrease))
 
 with open (outpath, "w") as textfile:
     textfile.write ("Financial Analysis\n")
@@ -62,6 +62,6 @@ with open (outpath, "w") as textfile:
     textfile.write("Total Months:  "+str(total)+"\n")
     textfile.write("Total:  $"+str(totalprofitlosses)+"\n")
     textfile.write("Average Change: $" +str(averagechange)+"\n")
-    textfile.write("Greatest Increase:  " + greatestmonth +" $"+str(greatestincrease)+"\n")
-    textfile.write("Greatest Decrease:  " + decreasemonth +" $"+str(greatestdecrease)+"\n")
+    textfile.write("Greatest Increase in Profits:  " + greatestmonth +" $"+str(greatestincrease)+"\n")
+    textfile.write("Greatest Decrease in Profits:  " + decreasemonth +" $"+str(greatestdecrease)+"\n")
     
