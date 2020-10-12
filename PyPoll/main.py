@@ -7,16 +7,12 @@ csvpath = os.path.join ("Resources", "election_data.csv")
 
 #create the path to send a txt file to the repository
 outpath = os.path.join ("Analysis", "election_data.txt")
-#A. total votes cast
-#B. unique candidates list
-#C. total number of votes each candidate got
+
 #D. percentage of candidates
 #E. the winner of the election based on popular vote
-#voterid, county, candidate
-#1, county_a, candidate-a
-#2, county_a, candidate_a
-#3, county_b, candidate_b
 
+# create empty dictionary to store candidates
+candidatelist = {}
 with open (csvpath) as filepath:
     csvreader = csv.reader(filepath, delimiter=',')
 
@@ -25,38 +21,44 @@ with open (csvpath) as filepath:
     csv_header = next(csvreader)
     
     print(f"CSV Header: {csv_header}")
-    #create the dictionary
-    candidates_list = (
-        "Khan",
-        "Correy",
-        "Li",
-        "O'Tooley",
-    )
+           
     #set my variables
     vote_count=0
-    total_votes=1
+    total_votes=0
     total=0
-    totaluniqueKhan=0
-    totaluniqueCorrey=0
-    totaluniqueLi=0
-    totaluniqueotooley=0
     greatestvotecount=0
     greatvotewinner=""
-   
+    candidate=""
+
+    for row in csvreader:
+        vote_count = vote_count + 1
+        candidate = row[2]
+        if candidate not in candidatelist:
+            candidatelist.update({candidate : 1})
+        else: 
+            candidatelist[candidate] += 1
+
     
     for row in csvreader:
-        total = total - 1
-        total_votes = total-1
+            
+            total_votes = total_votes+1
+
+            candidate_name = row[2]
+
+            if not candidate_name in candidate:
+                candidate.update({row[2] : candidate_name})
      # for row in reader:
     #for A what will we do? sum the total number of rows
         #total_votes +=1
    
-     #  For unique candidates 
+    #for unique_candidates:
     #all_candidate_with_duplicate.append(row[2])
-    #candidates_list = (Candidate)
-    #x = dict_candidates["Candidate"]
+    #Candidate = "Khan"
+    #dictionary = {"Candidate":"Khan"
+#}
+   # if Candidate in dictionary.values(): 
 
-    totaluniqueKhan.count
+    #totaluniqueKhan.count
     #count = 0
     #all_candidate_with_duplicate + []
     #create a dictionary
@@ -70,7 +72,7 @@ with open (csvpath) as filepath:
 
     #the goal is to loop everything once
  
-#    For unique candidates 
+   # for uniquecandidates 
 #    all_candidate_with_duplicate.append(row[2])
 #
 #    for total number of votes per candidate
@@ -89,13 +91,15 @@ with open (csvpath) as filepath:
     #{
     #    "candidate_a": 2,
     #    "candidate_b": 1,
-   
+#previous=int(row[1])
+
 #display my results
 print("Election Results")
 print("------------------------------")
 print("Total Votes: " +str(total_votes))
 print("------------------------------")
-print("Khan: " +str(totaluniqueKhan))
+print(candidatelist)
+print(vote_count)
 print("------------------------------")
 print("Winner:  ")
 print("------------------------------")
