@@ -13,14 +13,16 @@ vote_count=0
 # create empty dictionary to store candidates
 candidatelist = {}
 
+#open the file
 with open (csvpath) as filepath:
     csvreader = csv.reader(filepath, delimiter=',')
 
     print(csvreader)
     
+    #start on the second row
     csv_header = next(csvreader)
     
-    print(f"CSV Header: {csv_header}")
+    #print(f"CSV Header: {csv_header}")
            
     #set my variables
     vote_count=0
@@ -28,9 +30,10 @@ with open (csvpath) as filepath:
     total=0
     candidate=""
     candidate_name=""
-    vote=0
-    candidatechange=0
 
+
+
+    #calculte the candidate vote counts
     for row in csvreader:
         vote_count = vote_count + 1
         candidate = row[2]
