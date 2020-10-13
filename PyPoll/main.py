@@ -61,18 +61,18 @@ print("------------------------------")
 
 #send the results to a txt file
 with open (outpath, "w") as textfile:
-    textfile.write("Election Results")
-    textfile.write("------------------------------")
-    textfile.write(f"Total Votes: {vote_count}")
-    textfile.write("------------------------------")
+    textfile.write("Election Results\n")
+    textfile.write("------------------------------\n")
+    textfile.write(f"Total Votes: {vote_count}\n")
+    textfile.write("------------------------------\n")
     winner_votes=0
     winner_candidate=""
     for candidate in candidatelist:
-        textfile.write(f"{candidate}: {candidatelist[candidate]/vote_count*100:.3f}% {candidatelist[candidate]}")
+        textfile.write(f"{candidate}: {candidatelist[candidate]/vote_count*100:.3f}% {candidatelist[candidate]}\n")
         if candidatelist[candidate] > winner_votes:
             winnercount=candidatelist[candidate]
             winner_candidate=candidate
-    textfile.write("------------------------------")
-    textfile.write(f"Winner: {winner_candidate} ")
-    textfile.write("------------------------------")
+    textfile.write("------------------------------\n")
+    textfile.write(f"Winner: {winner_candidate} \n")
+    textfile.write("------------------------------\n")
 
