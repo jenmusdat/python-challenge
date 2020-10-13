@@ -8,8 +8,7 @@ csvpath = os.path.join ("Resources", "election_data.csv")
 #create the path to send a txt file to the repository
 outpath = os.path.join ("Analysis", "election_data.txt")
 
-#D. percentage of candidates
-#E. the winner of the election based on popular vote
+vote_count=0
 
 # create empty dictionary to store candidates
 candidatelist = {}
@@ -44,16 +43,33 @@ with open (csvpath) as filepath:
 #display my results
 print("Election Results")
 print("------------------------------")
-print("Total Votes: ", str(vote_count))
+print(f"Total Votes: {vote_count}")
 print("------------------------------")
-winner_votes=0
-winner=""
+winner_votes = 0
+winner_candidate = ""
 for candidate in candidatelist:
-    print((f"{candidate}: {candidatelist[candidate]vote_count)*100:.3f}%({candidatelist[candidate]})")
+    print(f"{candidate}: {candidatelist[candidate]/vote_count*100:.3f}% {candidatelist[candidate]}")
     if candidatelist[candidate] > winner_votes:
-        winnercount=candidatelist[candidate]
-        winner=candidate
+        winner_votes = candidatelist[candidate]
+        winner_candidate = candidate
 print("------------------------------")
-print(f"Winner: {greatvotewinner} ")
+print(f"Winner: {winner_candidate} ")
 print("------------------------------")
+
+#send the results to a txt file
+with open (outpath, "w") as textfile:
+    textfile.write("Election Results")
+    textfile.write("------------------------------")
+    textfile.write(f"Total Votes: {vote_count}")
+    textfile.write("------------------------------")
+    winner_votes=0
+    winner_candidate=""
+    for candidate in candidatelist:
+        textfile.write(f"{candidate}: {candidatelist[candidate]/vote_count*100:.3f}% {candidatelist[candidate]}")
+        if candidatelist[candidate] > winner_votes:
+            winnercount=candidatelist[candidate]
+            winner_candidate=candidate
+    textfile.write("------------------------------")
+    textfile.write(f"Winner: {winner_candidate} ")
+    textfile.write("------------------------------")
 
